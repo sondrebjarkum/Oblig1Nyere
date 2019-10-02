@@ -1,0 +1,59 @@
+﻿<head>
+    <meta name="veiwpoint" />
+    <script src="~/Scripts/jquery-­‐1.7.1.js"></script>
+    <script src ="~/Scripts/jquery.unobtrusive-­‐ajax.js"></script>
+</head>
+
+
+@model IEnumerable<Oblig1Nyere.Models.Reise>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+    <form action="/Home/KjopBillett" method="post">
+        <table>
+            <tr>
+                <td>
+                    <input type="text" placeholder="Hvor vil du reise fra?" name="Fra" required>
+                </td>
+                <td>
+                    <input type="text" placeholder="Hvor vil du reise til?" name="Til" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="date" placeholder="Dato" name="Dato" required>
+                </td>
+                <td>
+                    <input type="time" placeholder="Tid" name="Tid" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="submit" name="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br/>
+    <form action="/Ajax/Reg" data-­ajax="true" data­‐ajax‐mode="replace" data‐ajax­-update="#Resultat" method="post">
+        <tr><td>Rute ID: </td><td><input type="text" name="tittel" /></td></tr>
+    </form>
+    <br />
+
+        Avganger:
+        @foreach (var b in Model)
+        {
+            <p>
+                Rute: @b.Id<br />
+                avgang : @b.Avgang<br />
+                avgang : @b.Ankomst<br />
+                avgang tid : @b.TidAvgang<br />
+                ankomst tid : @b.TidAnkomst<br />
+            </p>
+        }

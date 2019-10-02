@@ -1,0 +1,15 @@
+﻿@model List<Oblig1Nyere.Models.Billett>
+@{
+    ViewBag.Title = "KjopBillett";
+}
+
+<h2>KjopBillett</h2>
+
+@foreach (var b in Model)
+{
+    <p>
+        Id : @b.Id<br />
+        tid : @b.ReiseId<br />
+        reise: @b.Reise<br/>
+    </p>
+}
